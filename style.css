@@ -40,7 +40,7 @@ main h1 {
   overflow: hidden;
 }
 
-.quiz-item h3 {
+.quiz-item h2 {
   padding: 16px 20px;
   color: #E2E8F0;
   display: flex;
@@ -49,7 +49,7 @@ main h1 {
   background-color: #1e293B;
 }
 
-.quiz-item h3:before {
+.quiz-item h2:before {
   counter-increment: quiz-item;
   content: counter(quiz-item);
   background-color: #475569;

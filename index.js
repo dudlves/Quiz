@@ -102,7 +102,7 @@ const mostrarTotal = document.querySelector("#acertos span");
 
 for (const item of perguntas) {
   const quizItem = template.content.cloneNode(true);
-  quizItem.querySelector("h3").textContent = item.pergunta;
+  quizItem.querySelector("h2").textContent = item.pergunta;
 
   for (const resposta of item.respostas) {
     const dt = quizItem.querySelector("dl dt").cloneNode(true);

@@ -106,11 +106,16 @@ for (const item of perguntas) {
 
   for (const resposta of item.respostas) {
     const dt = quizItem.querySelector("dl dt").cloneNode(true);
-    dt.querySelector("span").textContent = resposta;
+    dt.querySelector("label").textContent = resposta;
     dt.querySelector("input").setAttribute(
       "name",
       "pergunta-" + perguntas.indexOf(item)
     );
+    
+    dt.querySelector("input").id = "input_" + resposta;
+    dt.querySelector("label").setAttribute("for", "input_" + resposta);
+
+
     dt.querySelector("input").value = item.respostas.indexOf(resposta);
     dt.querySelector("input").onchange = (event) => {
       const estaCorreta = event.target.value == item.correta;
@@ -120,7 +125,7 @@ for (const item of perguntas) {
         corretas.add(item);
       }
 
-      mostrarTotal.textContent = corretas.size + 'de' + totalDePerguntas
+      mostrarTotal.textContent = corretas.size + ' de ' + totalDePerguntas
 
     };
     quizItem.querySelector("dl").appendChild(dt);

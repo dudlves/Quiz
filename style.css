@@ -91,27 +91,35 @@ input {
   flex-shrink: 0;
 }
 
-input:checked {
+input.incorreta:checked {
+  border: 1px solid #df1b1b;
+}
+
+input.correta:checked {
   border: 1px solid #A3E635;
+}
+
+.input.correta:checked:before {
+  background-color: #A3E635; 
+}
+
+.input.incorreta:checked:before {
+  background-color: #df1b1b; 
 }
 
 input:checked:before {
   content: "";
-  width: 10px;
-  height: 10px;
-  background-color: #A3E635;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
 }
-
 
 #acertos {
   text-align: center;
   background-color: #A3E635;
-
   position: fixed;
   bottom: 0;
   left: 0;
-
   width: 100%;
   padding: 12px;
 }

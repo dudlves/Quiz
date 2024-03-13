@@ -99,7 +99,6 @@ const corretas = new Set();
 const totalDePerguntas = perguntas.length;
 const mostrarTotal = document.querySelector("#acertos span");
 
-
 for (const item of perguntas) {
   const quizItem = template.content.cloneNode(true);
   quizItem.querySelector("h2").textContent = item.pergunta;
@@ -111,10 +110,25 @@ for (const item of perguntas) {
       "name",
       "pergunta-" + perguntas.indexOf(item)
     );
-    
+
     dt.querySelector("input").id = "input_" + resposta;
     dt.querySelector("label").setAttribute("for", "input_" + resposta);
 
+    dt.querySelector("input").addEventListener("click", function () {
+      var input = dt.querySelector('input');
+      var radio = document.querySelectorAll('input[type="radio"]')
+      radio.forEach(function (input) {
+        input.style.backgroundColor = "";
+      })
+
+      if (input.value == item.correta) {
+        this.classList.remove("incorreta");
+        this.classList.add("correta");
+      }else{
+        this.classList.remove("correta");
+        this.classList.add("incorreta");  
+      }
+    })
 
     dt.querySelector("input").value = item.respostas.indexOf(resposta);
     dt.querySelector("input").onchange = (event) => {
@@ -125,9 +139,8 @@ for (const item of perguntas) {
         corretas.add(item);
       }
 
-      mostrarTotal.textContent = corretas.size + ' de ' + totalDePerguntas
-
-    };
+      mostrarTotal.textContent = corretas.size + " de " + totalDePerguntas;
+    }
     quizItem.querySelector("dl").appendChild(dt);
   }
 

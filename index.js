@@ -122,10 +122,8 @@ for (const item of perguntas) {
       })
 
       if (input.value == item.correta) {
-        this.classList.remove("incorreta");
         this.classList.add("correta");
       }else{
-        this.classList.remove("correta");
         this.classList.add("incorreta");  
       }
     })
